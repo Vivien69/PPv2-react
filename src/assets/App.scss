@@ -1,0 +1,148 @@
+@font-face {
+  font-family: "Texta";
+  src: local("Texta"),
+   url("./Fonts/TextaRegular.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "SFProdr";
+    src: local("Texta"),
+     url("./Fonts/SFPRODISPLAYREGULAR.OTF") format("truetype");
+    }
+* {
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  list-style: none;
+}
+.App {
+  margin:0 auto;
+  font-family: 'SFProdr';
+  font-weight:500;
+}
+//Components Layouts/Header
+header[role=banner] {
+  background-color:white;
+  margin:0 auto;
+  border-bottom: solid 1px rgb(77, 77, 77);
+
+  nav {
+    width:calc(100vw - 2em);
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+
+  //Components Layouts/Navbar
+    ul {
+      display:flex;
+      justify-content: center;
+      flex-shrink:0;
+      
+
+      li:first-child {
+        border-radius:2px 0 0 2px;
+      }
+      li:last-child {
+        border-radius: 0 2px 2px 0;
+      }
+      li {
+        padding:0.4em;
+      }
+      li:hover {
+
+      }
+    }
+  }
+}
+
+
+//Components Layouts/Carousel
+.carousel {
+  background-color: #D63A3A;
+  padding: 0 2em 2em 2em;
+  
+
+  span {
+    text-transform: uppercase;
+    font-size:1.5vw;
+    display:block;
+    font-weight:bold;
+    padding:0.5em;
+  }
+}
+
+.item-img-moyen {
+	border: 2px solid #f0efef;
+	background-color: #fff;
+	padding: 0;
+  margin:0 5px;
+	width: 150px;
+	height: 90px;
+	position: relative;
+	background-size: auto auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+	border-radius: 3px;
+	box-sizing: border-box;
+}
+
+
+.flickity-prev-next-button {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+
+// Main Component layout index
+main {
+  display:flex;
+  margin: 0 auto;
+  width:calc(100vw - 4em);
+  background-color:#FFF;
+  padding:1em 0;
+
+  section {
+    padding:30px 10px;
+  }
+
+  aside {
+    text-align:left;
+    background: #FFF;
+    border: 1px solid #e5e5e5;
+    padding: 1em;
+    vertical-align: top;
+    max-width:25vw;
+    border-radius:3px;
+  }
+
+}
+
+
+// Component Footer
+footer[role=foot] {
+  background-color: #313131;
+  color:#FFF;
+  padding:3em 2em;
+
+  section:first-child {
+    margin-bottom:1em;
+  }
+
+  .flex {
+    display:flex;
+    justify-content: center;
+
+    .col {
+      padding:0.5em;
+      flex: 1 1 1;
+
+      span {
+        font-weight:bold;
+      }
+
+      ul {
+        padding:0;
+      }
+    }
+  }
+}

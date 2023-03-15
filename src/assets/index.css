@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  /* white circles */
+  .flickity-page-dots .dot {
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+    background: transparent;
+    border: 2px solid rgb(202, 202, 202);
+  }
+  /* fill-in selected dot */
+  .flickity-page-dots .dot.is-selected {
+    background: rgb(202, 202, 202);
+  }
+  .flickity-button-icon {
+    fill: white;
+  }
+  .flickity-prev-next-button {
+    width: 30px;
+    height: 30px;
+  }
+  .flickity-button:hover {
+    background: rgb(202, 202, 202);
+  }
