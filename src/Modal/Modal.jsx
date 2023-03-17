@@ -19,7 +19,7 @@ const Modal = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 bg-black bg-opacity-75 w-full h-screen z-10 flex items-center justify-center">
+    <div className="absolute inset-0 bg-black bg-opacity-75 w-full h-screen z-100 flex items-center justify-center">
       <span
         className="inline-block absolute top-0 right-0 mr-4 mt-4 cursor-pointer"
         onClick={closeModal}

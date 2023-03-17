@@ -19,7 +19,7 @@ const Search = ({classDiv, error}) => {
         const csrf = http.get('/sanctum/csrf-cookie');
         const deployListMarchands = http.get('/api/marchand')
         .then(response => {
-            
+          
           setData(response.data);
           setSearchApiData(response.data)
     

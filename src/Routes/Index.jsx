@@ -6,7 +6,7 @@ import Register from '../Members/Register'
 import Login from '../Members/Login'
 import Dashboard from '../Members/Index'
 import AddParrainage from '../Members/Pages/Add/Parrainage'
-import AddMarchand from '../Members/Pages/Add/Marchand'
+import AddMarchand from '../Members/Pages/Add/Marchand/Index'
 
 
 function IndexRoutes() {

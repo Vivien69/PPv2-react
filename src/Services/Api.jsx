@@ -1,5 +1,5 @@
 import axios from 'axios';
- 
+
 const http = axios.create({
     baseURL: 'http://localhost:8000',
     withCredentials: true,
@@ -9,6 +9,20 @@ const http = axios.create({
     }
 });
 
-const csrf = () => http.get('/sanctum/csrf-cookie');
+
+// export const asyncLocalStorage = {
+//     setItem: function (key, value) {
+//         return Promise.resolve().then(function () {
+//             localStorage.setItem(key, value);
+//         });
+//     },
+//     getItem: function (key) {
+//         return Promise.resolve().then(function () {
+//             return localStorage.getItem(key);
+//         });
+//     }
+// };
+
+
  
 export default http;

@@ -16,7 +16,8 @@
     "react-flickity-component": "^4.0.4",
     "react-icons": "^4.8.0",
     "react-modal": "^3.16.1",
-    "react-router-dom": "^6.8.2"
+    "react-router-dom": "^6.8.2",
+    "react-step-progress": "^1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
