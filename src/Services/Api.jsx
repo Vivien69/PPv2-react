@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const http = axios.create({
+export const http = axios.create({
     baseURL: 'http://localhost:8000',
     withCredentials: true,
     headers: {
@@ -9,6 +9,28 @@ const http = axios.create({
     }
 });
 
+export const csrf = async () => {
+    const csrfToken = getCookie('XSRF-TOKEN');
+
+    if(!csrfToken)
+        await http.get('/sanctum/csrf-cookie');
+
+}
+
+function getCookie(name) {
+    if (!document.cookie) {
+      return null;
+    }
+  
+    const xsrfCookies = document.cookie.split(';')
+      .map(c => c.trim())
+      .filter(c => c.startsWith(name + '='));
+  
+    if (xsrfCookies.length === 0) {
+      return null;
+    }
+    return decodeURIComponent(xsrfCookies[0].split('=')[1]);
+  }
 
 // export const asyncLocalStorage = {
 //     setItem: function (key, value) {
@@ -24,5 +46,4 @@ const http = axios.create({
 // };
 
 
- 
-export default http;
+ export default http;

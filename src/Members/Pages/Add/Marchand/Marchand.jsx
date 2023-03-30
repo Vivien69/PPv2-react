@@ -58,7 +58,7 @@ const Marchand = ({formData, setFormData, errors}) => {
           <InputText name='url'  oclass='mb-4' state={formData.url} label='Adresse du site' placeholder='https://www.' error={errors.url} icone={<BsLink45Deg />} onChange={e => setFormData({...formData, url:e})} />
           <InputSelect name='categories' oclass='mb-4' state={formData.categorie} data={categories} error={errors.categorie} label='Categorie' icone={iconeCategories} onChange={e => setFormData({...formData, categorie:e})} />
           
-          <InputTextarea name='content' state={formData.content} label='Description' placeholder='Ajoutez une description de 1000 caractères' oclass='h-80' error={errors.content} icone={<ImTextHeight />} onChange={e => setFormData({...formData, content:e})} />
+          <InputTextarea name='content' compteur='600' state={formData.content} label='Description' placeholder="Ajoutez une description d'au moins 600 caractères" oclass='h-80' error={errors.content} icone={<ImTextHeight />} onChange={e => setFormData({...formData, content:e})} />
 
       </div>
     </div>

@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
 import Logo from './Logo'
-import { FaPlusCircle, FaBars, FaRocket } from 'react-icons/fa';
-import { IoRocketOutline, IoPeople, IoPlaySharp, IoFolderOpenOutline, IoAddCircle, IoSearchSharp } from 'react-icons/io5'
+import { FaPlusCircle, FaBars} from 'react-icons/fa';
+import { IoRocketOutline, IoPeople, IoPlaySharp, IoFolderOpenOutline } from 'react-icons/io5'
+import useAuthContext from '../../Context/AuthContext';
+
+import NavbarGuest from './NavbarGuest';
+import NavbarAuth from './NavbarAuth';
 
 import Search from './Search';
-import ModalRegister from '../../Modal/ModalRegister'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../../assets/index.css'
-
 
 function Navbar() {
 
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const location = useLocation();
+  const { user, logout } = useAuthContext();
+  
 
   return (
 
@@ -39,24 +44,27 @@ function Navbar() {
                 Boostés
                 </li>
             </a>
-            <a href="" className="flex items-center p-2 focus:bg-slate-700 focus:text-red-700 hover:text-red-700 hover:duration-300">
+            <Link to='/dashboard' href="" className="flex items-center p-2 focus:bg-slate-700 focus:text-red-700 hover:text-red-700 hover:duration-300">
               <li className="flex px-2 items-center">
-              <span className='pr-1 md:pr-2'><IoFolderOpenOutline /></span>Catégories
+              <span className='pr-1 md:pr-2'><IoFolderOpenOutline /></span>Dashboard
               </li>
-            </a>
-          
+            </Link>
+        
           </ul>
 
-          
         </div>
 
-        
-       <Search classDiv='lg:w-1/3'/>
+       <Search classDiv='static lg:w-1/3'/>
 
 
         {/* Navbar right : User + ADD + */}
         <div className="hidden md:flex">
-         <ModalRegister />
+          { user ? (
+            <NavbarAuth />
+          ) : (
+            <NavbarGuest />
+          )}
+
           <Link to='/parrainage/ajouter' className='flex items-center bg-slate-700 rounded-3xl lg:rounded p-2 focus:bg-slate-700 focus:text-red-700 hover:text-red-700 hover:bg-slate-600 hover:duration-300 hover:scale-105 mx-2 lg:mx-0 lg:ml-2'>
               <FaPlusCircle className='text-2xl lg:mr-2'/>
               <span className='hidden lg:block'>Ajouter</span>
@@ -66,14 +74,18 @@ function Navbar() {
 
       {/* Menu Hidden for mobile */}
       <div className='md:hidden flex top-4 right-6'>
-          <ModalRegister />
+        <Link to='/login' state={{ background: location }} ><button className='flex items-center bg-slate-700 rounded-3xl lg:rounded p-2 focus:bg-slate-700 focus:text-red-700 hover:text-red-800 hover:bg-slate-600 hover:duration-300 hover:scale-105 '>
+              <IoPeople className='text-2xl lg:mr-2' />
+              <span className='hidden lg:block'>Connexion</span>
+          </button>
+          </Link>
 
-          <button onClick={() => setShowMenu(!showMenu)} aria-label='navigation' type='button'  className='bg-slate-700 rounded-3xl p-2 text-2xl md:hidden text-gray-200 transition duration-400 focus:outline-none focus:text-white hover:text-red-800 ml-2 mr-1'>
+        <button onClick={() => setShowMenu(!showMenu)} aria-label='navigation' type='button'  className='bg-slate-700 rounded-3xl p-2 text-2xl md:hidden text-gray-200 transition duration-400 focus:outline-none focus:text-white hover:text-red-800 ml-2 mr-1'>
             <FaBars />
             </button>
         </div>
 
-        </div>
+      </div>
         
 
       {/*Mobile Menu */}

@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import  Navbar from './Components/Navbar'
+import Navbar from './Components/Navbar'
 import Carousel from './Components/Carousel'
 
 const Header = () => {

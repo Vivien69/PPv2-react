@@ -1,15 +1,17 @@
 import React from 'react'
 import AsideVisited from './Asides/AsideVisited'
-import { Link
- } from 'react-router-dom'
+import { Link } from "react-router-dom";
+
 function Index() {
+
+
   return (
     <main className='flex p-1'>
-
-      <Link to='/register'>Inscription </Link>
+     
 
         <section className='lg:w-3/4'>
-            
+        <Link to='/marchand/ajouter'>Ajouter un marchand </Link>
+        
             <h1 className='py-3 font-medium uppercase text-lg sm:text-xl lg:text-3xl md:text-2xl '>Code parrainage - Trouver votre code promo de parrainage</h1>
             <p className='pl-2'>Gagnez des €uros en trouvant facilement des codes promo provenant des parrains sur le marchand de votre choix ou proposez vos offres et vos services de parrainage pour économiser de l'argent.</p>
         

@@ -13,7 +13,7 @@ const flickityOptions = {
 
 function Carousel() {
   return (
-    <div className='bg-gray-800 pt-6 pb-12 lg:pt-10 lg:pb-16 mb-8'>
+    <div className='bg-gray-800 pt-6 pb-12 lg:pt-10 lg:pb-16 mb-2'>
      
       <Flickity
       elementType={'div'} // default 'div'

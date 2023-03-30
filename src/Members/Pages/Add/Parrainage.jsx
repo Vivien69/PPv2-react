@@ -15,7 +15,6 @@ import InputText from '../../../Components/Forms/InputText'
 import InputTextarea from '../../../Components/Forms/InputTextarea'
 import BigRedButton from '../../../Components/Buttons/BigRedButton'
 import ListMarchand from '../../../Components/Forms/ListMarchand'
-import OutsideAlerter from "../../../Components/OutsideClicker";
 
 function Ajouter() {
 
