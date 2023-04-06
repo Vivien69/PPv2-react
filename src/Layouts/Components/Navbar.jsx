@@ -2,21 +2,22 @@ import React, { useState } from 'react'
 import Logo from './Logo'
 import { FaPlusCircle, FaBars} from 'react-icons/fa';
 import { IoRocketOutline, IoPeople, IoPlaySharp, IoFolderOpenOutline } from 'react-icons/io5'
-import useAuthContext from '../../Context/AuthContext';
 
 import NavbarGuest from './NavbarGuest';
 import NavbarAuth from './NavbarAuth';
+import { useAuth } from '../../Members/Auth/Session/useAuth';
 
 import Search from './Search';
 import { Link, useLocation } from 'react-router-dom';
 import '../../assets/index.css'
+import { useEffect } from 'react';
 
-function Navbar() {
+function Navbar({user}) {
 
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const location = useLocation();
-  const { user, logout } = useAuthContext();
+  const { logout } = useAuth();
   
 
   return (
@@ -60,7 +61,7 @@ function Navbar() {
         {/* Navbar right : User + ADD + */}
         <div className="hidden md:flex">
           { user ? (
-            <NavbarAuth />
+            <NavbarAuth user={user}/>
           ) : (
             <NavbarGuest />
           )}

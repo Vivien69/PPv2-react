@@ -73,7 +73,7 @@ function Ajouter() {
 
         </div>
 
-        <div className="md:w-2/3 w-full bg-white pr-5 pl-5 pb-5 rounded-lg lg:rounded-l-none">
+        <div className="md:w-2/3 w-full bg-white pr-5 pl-5 pb-5">
 
         <h1 className="text-xl font-semibold mb-10 border-b-4 border-slate-200">Ajouter un parrainage</h1>
 

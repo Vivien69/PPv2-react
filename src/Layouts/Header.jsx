@@ -1,17 +1,22 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useEffect} from 'react'
 import Navbar from './Components/Navbar'
 import Carousel from './Components/Carousel'
+import { useLocation } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({hidden, user}) => {
+
+  const location = useLocation()
+  location.pathname.includes('profil') ? hidden = true : hidden = false
+
   return (
     <Fragment>
 
         <header role="banner">
-            <Navbar />
+            <Navbar user={user}/>
         </header>
         
-            <Carousel />
-
+            <Carousel hidden={hidden} />
+        
     </Fragment>
      
   )

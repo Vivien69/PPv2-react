@@ -1,13 +1,11 @@
-import React, { Fragment }  from 'react'
-import useAuthContext from '../Context/AuthContext'
+import React, { Fragment, useEffect }  from 'react'
+import { AuthContext } from './Auth/Session/AuthContext';
 import { Tab } from '@headlessui/react';
 import { HiMenu, HiMail, HiOutlineBell } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import Menu from './Admin/Components/Menu'
 
-function Dashboard() {
-
-  const { user } =  useAuthContext();
+function Dashboard({user}) {
 
   return (
   <div className='px-4'>
@@ -21,7 +19,7 @@ function Dashboard() {
       <Tab as={Fragment}>
           {({ selected }) => (
               <div className="flex-auto !outline-none">
-                  <button className={`${selected ? 'bg-red-800 bg-opacity-40 outline-none ' : ''} text-gray-900 rounded w-full hover:bg-slate-200 border border-transparent flex justify-center p-3.5 py-1.5 `}>
+                  <button className={`${selected ? 'bg-red-800 bg-opacity-40 outline-none' : 'hover:bg-slate-200'} text-gray-900 rounded w-full border border-transparent flex justify-center p-3.5 py-1.5 `}>
                       <HiMenu className='text-2xl'/>
                   </button>
               </div>
@@ -30,7 +28,7 @@ function Dashboard() {
       <Tab as={Fragment}>
           {({ selected }) => (
               <div className="flex-auto !outline-none">
-                  <button className={`${selected ? 'bg-red-800 bg-opacity-40 outline-none ' : ''} text-gray-900 rounded w-full hover:bg-slate-200 border border-transparent flex justify-center p-3.5 py-1.5 `}>
+                  <button className={`${selected ? 'bg-red-800 bg-opacity-40 outline-none' : 'hover:bg-slate-200'} text-gray-900 rounded w-full border border-transparent flex justify-center p-3.5 py-1.5 `}>
                       <HiOutlineBell className='text-2xl'/>
                   </button>
               </div>
@@ -39,7 +37,7 @@ function Dashboard() {
       <Tab as={Fragment}>
           {({ selected }) => (
               <div className="flex-auto !outline-none">
-                  <button className={`${selected ? 'bg-red-800 bg-opacity-40 outline-none ' : ''} text-gray-900 rounded w-full hover:bg-slate-200 border border-transparent flex justify-center p-3.5 py-1.5 `}>
+                  <button className={`${selected ? 'bg-red-800 bg-opacity-40 outline-none' : 'hover:bg-slate-200'} text-gray-900 rounded w-full border border-transparent flex justify-center p-3.5 py-1.5 `}>
                       <HiMail className='text-2xl'/>
                   </button>
               </div>

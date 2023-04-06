@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Index from '../Layouts/Index'
-import Dashboard from '../Members/Index'
+
 import AddParrainage from '../Members/Pages/Add/Parrainage'
 import AddMarchand from '../Members/Pages/Add/Marchand/Index'
 
@@ -12,20 +12,23 @@ import ModalRegister from '../Modal/ModalRegister'
 import ModalPasswordLost from '../Modal/ModalpasswordLost';
 import NoMatch from './NoMatch'
 
-import AuthLayout from '../Layouts/Components/AuthLayout'
+//MEMBRES
+import { withCookies } from 'react-cookie'
+import Dashboard from '../Members/Index'
+import Profil from '../Members/Pages/Profil/Profil'
+
 import GuestLayout from '../Layouts/Components/GuestLayout'
-import ProtectedRoute from './ProtectedRoute'
 import useAuthContext from '../Context/AuthContext';
 
 
 //ADMINISTRATION
-
+import ProtectedRoute from './ProtectedRoute'
 import AdminUsers from '../Members/Admin/Users/Users'
 import AdminMarchands from '../Members/Admin/Marchands//Marchands'
+import { useEffect } from 'react';
 
-function IndexRoutes() {
+function IndexRoutes({user}) {
 
-  const { user } = useAuthContext();
 
   const location = useLocation();
   const background = location.state && location.state.background;
@@ -34,6 +37,29 @@ function IndexRoutes() {
     <>
     
     <Routes location={background || location}>
+      <Route path='/profil/:userName' element={<Profil />} />
+
+
+{/* Routes des membres */}
+      <Route element={<ProtectedRoute isAllowed={!!user}/>}>
+        <Route path='/dashboard' element={<Dashboard user={user}/>} />
+      </Route>
+
+
+{/* Routes Admin */}
+      <Route element={<ProtectedRoute isAllowed={!!user } />}>
+        <Route path='/admin/users' element={<AdminUsers user={user}/>} />
+        <Route path='/admin/marchands' element={<AdminMarchands user={user}/>} />
+      </Route>
+      
+        
+{/* Route des pages */}
+      <Route path='/' element={<Index />} />
+      <Route path='parrainage/ajouter' element={<AddParrainage />} />
+      <Route path='marchand/ajouter' element={<AddMarchand />} />
+      <Route path='*' element={<NoMatch />} />
+
+{/* Routes des modals */}
       <Route path="/" element={<Index />}>
         <Route element={<GuestLayout />}>
           <Route path="/passwordLost" element={<ModalPasswordLost />} />
@@ -42,30 +68,14 @@ function IndexRoutes() {
         </Route>
       </Route>
 
-      <Route element={<ProtectedRoute isAllowed={!!user} />}>
-        <Route path='/dashboard' element={<Dashboard />} />
-      </Route>
-
-
-      <Route element={<ProtectedRoute isAllowed={!!user && user.role.includes('ADMIN')}  />}>
-        <Route path='/admin/users' element={<AdminUsers />} />
-        <Route path='/admin/marchands' element={<AdminMarchands />} />
-      </Route>
-      
-        
-
-          <Route path='/' element={<Index />} />
-          <Route path='parrainage/ajouter' element={<AddParrainage />} />
-          <Route path='marchand/ajouter' element={<AddMarchand />} />
-          <Route path='*' element={<NoMatch />} />
-
     </Routes>
-      {background && (
-        <Routes>
-          <Route path="/passwordLost" element={<ModalPasswordLost />} />
-          <Route path="/login" element={<ModalLogin />} />
-          <Route path="/register" element={<ModalRegister />} />
-        </Routes>)}
+
+    {background && (
+      <Routes>
+        <Route path="/passwordLost" element={<ModalPasswordLost />} />
+        <Route path="/login" element={<ModalLogin />} />
+        <Route path="/register" element={<ModalRegister />} />
+      </Routes>)}
   </>
   )
 }

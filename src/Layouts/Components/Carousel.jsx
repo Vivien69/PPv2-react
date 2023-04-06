@@ -11,14 +11,15 @@ const flickityOptions = {
     initialIndex: 2
 }
 
-function Carousel() {
+function Carousel({hidden}) {
   return (
-    <div className='bg-gray-800 pt-6 pb-12 lg:pt-10 lg:pb-16 mb-2'>
+    <div className={`bg-gray-800 pt-6 pb-12 lg:pt-10 lg:pb-16 mb-2 ${hidden && ('hidden')}`}>
      
       <Flickity
       elementType={'div'} // default 'div'
       options={flickityOptions} // takes flickity options {}
       disableImagesLoaded={false} // default false
+      reloadOnUpdate
       >
       
       <div className="ml-2 border-2 bg-white w-40 h-20 bg-auto bg-center bg-no-repeat rounded box-border" style={{ backgroundImage: "url("+img1+")" }}></div>

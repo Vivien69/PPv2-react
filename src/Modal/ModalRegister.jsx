@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import Register from '../Members/Register'
+import Register from '../Members/Auth/Register'
 
 const ModalRegister = () => {
 

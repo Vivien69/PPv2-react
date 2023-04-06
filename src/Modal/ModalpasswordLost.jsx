@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import PasswordLost from '../Members/PasswordLost'
+import PasswordLost from '../Members/Auth/PasswordLost'
 
 
 const ModalPasswordLost = () => {
