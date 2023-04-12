@@ -75,13 +75,13 @@ const Search = ({classDiv, error}) => {
   return (
 
       <div className={`w-full mr-2 transition relative ${classDiv}`}>
-            <InputText name='search' placeholder='Rechercher...' state={name} icone={iconeSearch} oclass='w-full relative ' off classDiv='static' error={error} onChange={ e => getMarchands(e)}/>
+            <InputText name='search' placeholder='Rechercher...' state={name} icone={iconeSearch} oclass='lg:w-full relative ' off classDiv='static' error={error} onChange={ e => getMarchands(e)}/>
             <input name='idSearchMarchand' placeholder='Rechercher...' state={idMarchand} className='hidden'/>
 
               {hideMarchands && (
               <OutsideAlerter change={hide => setHideMarchands(hide)}>
                 
-              <div id='result' className={`border-2 bg-slate-50 transition duration-500 transition border-slate-200 absolute z-20 w-full`}>
+              <div id='result' className={`border-2 bg-slate-50 duration-500 transition border-slate-200 absolute z-20 w-full`}>
                 {
                   data.map(item => {
                     return(

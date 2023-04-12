@@ -13,23 +13,19 @@ import ModalPasswordLost from '../Modal/ModalpasswordLost';
 import NoMatch from './NoMatch'
 
 //MEMBRES
-import { withCookies } from 'react-cookie'
 import Dashboard from '../Members/Index'
 import Profil from '../Members/Pages/Profil/Profil'
 
-import GuestLayout from '../Layouts/Components/GuestLayout'
-import useAuthContext from '../Context/AuthContext';
-
+import GuestLayout from './GuestLayout'
+import AuthLayout from './AuthLayout'
+import DefaultLayout from './DefaultLayout'
 
 //ADMINISTRATION
 import ProtectedRoute from './ProtectedRoute'
 import AdminUsers from '../Members/Admin/Users/Users'
 import AdminMarchands from '../Members/Admin/Marchands//Marchands'
-import { useEffect } from 'react';
 
-function IndexRoutes({user}) {
-
-
+function IndexRoutes() {
   const location = useLocation();
   const background = location.state && location.state.background;
 
@@ -37,27 +33,30 @@ function IndexRoutes({user}) {
     <>
     
     <Routes location={background || location}>
-      <Route path='/profil/:userName' element={<Profil />} />
-
-
+      
 {/* Routes des membres */}
-      <Route element={<ProtectedRoute isAllowed={!!user}/>}>
-        <Route path='/dashboard' element={<Dashboard user={user}/>} />
+      <Route element={<AuthLayout/>}>
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/profil/:userName/:tabsNav?' element={<Profil />} />
       </Route>
 
 
 {/* Routes Admin */}
-      <Route element={<ProtectedRoute isAllowed={!!user } />}>
-        <Route path='/admin/users' element={<AdminUsers user={user}/>} />
-        <Route path='/admin/marchands' element={<AdminMarchands user={user}/>} />
+      <Route element={<ProtectedRoute />}>
+        <Route path='/admin/users' element={<AdminUsers />} />
+        <Route path='/admin/marchands' element={<AdminMarchands />} />
       </Route>
       
         
 {/* Route des pages */}
-      <Route path='/' element={<Index />} />
-      <Route path='parrainage/ajouter' element={<AddParrainage />} />
-      <Route path='marchand/ajouter' element={<AddMarchand />} />
-      <Route path='*' element={<NoMatch />} />
+      <Route element={<DefaultLayout/>}>
+        <Route path='/' element={<Index />} />
+        <Route path='parrainage/ajouter' element={<AddParrainage />} />
+        <Route path='marchand/ajouter' element={<AddMarchand />} />
+        <Route path='*' element={<NoMatch />} />
+      </Route>
+
+      
 
 {/* Routes des modals */}
       <Route path="/" element={<Index />}>

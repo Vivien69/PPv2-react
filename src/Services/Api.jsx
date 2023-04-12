@@ -12,7 +12,6 @@ export const http = axios.create({
 
 export const csrf = async () => {
     const csrfToken = getCookie('XSRF-TOKEN');
-
     if(!csrfToken)
         await http.get('/sanctum/csrf-cookie');
 

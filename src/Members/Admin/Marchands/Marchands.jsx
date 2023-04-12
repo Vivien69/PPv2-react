@@ -4,7 +4,7 @@ import http from '../../../Services/Api';
 import sortBy from 'lodash/sortBy';
 import ErrorText from '../../../Components/Forms/ErrorText'
 import Menu from '../Components/Menu';
-import useAuthContext from '../../../Context/AuthContext';
+import { useAuthContext } from '../../../Members/Auth/Session/AuthContext';
 
 function Marchands() {
 

@@ -4,14 +4,15 @@ import http from '../../../Services/Api';
 import sortBy from 'lodash/sortBy';
 import ErrorText from '../../../Components/Forms/ErrorText'
 import Menu from '../Components/Menu';
-import useAuthContext from '../../../Context/AuthContext';
+import { useAuthContext } from '../../../Members/Auth/Session/AuthContext';
 import InputText from '../../../Components/Forms/InputText'
 import { ImSearch, ImEye } from 'react-icons/im'
 import { RiEdit2Line, RiDeleteBin7Fill } from 'react-icons/ri'
 import Button from '../../../Components/Buttons/Button';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
-function Users() {
+function Users({role}) {
 
   const { user } =  useAuthContext();
 
@@ -162,7 +163,9 @@ useEffect(() => {
                       textAlignment: 'right',
                       render: (item, number) => (
                         <div className='flex justify-end'>
-                          <Button icon={<ImEye />} textHidden oclass='lg:mx-1 p-1.5 bg-sky-500 enabled:hover:bg-sky-700 enabled:hover:text-slate-300' click={() => showItem(item, number)} />
+                          <Link to={`/profil/${item.name}`}>
+                            <Button icon={<ImEye />} textHidden oclass='lg:mx-1 p-1.5 bg-sky-500 enabled:hover:bg-sky-700 enabled:hover:text-slate-300' click={() => showItem(item, number)} />
+                          </Link>
                           <Button icon={<RiEdit2Line />} textHidden oclass='lg:mx-1 p-1.5 bg-emerald-500 enabled:hover:bg-emerald-700 enabled:hover:text-slate-300' click={() => editItem(item, number)} />
                           <Button icon={<RiDeleteBin7Fill />} textHidden oclass='lg:mx-1 p-1.5 bg-red-500 enabled:hover:bg-red-700 enabled:hover:text-slate-300' click={() => deleteItem(item.id, number)} />
                           </div>

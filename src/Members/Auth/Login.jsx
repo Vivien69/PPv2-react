@@ -16,17 +16,19 @@ const Login = ({onClickcross, background, CloseModal}) => {
   
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [remember, setRemember] = useState(false)
   const [services, setServices] = useState({errors:null, loading:false})
 
   useEffect(() => {
     emailRef.current.focus();
-  
+
   }, [])
   
   const SubmitForm = async (e) => {
     e.preventDefault();
 
-    login({email, password, setServices});
+    login({email, password, remember, services, setServices});
+
    
 
       //const OAuth = await http.get('/oauth/authorize');
@@ -66,8 +68,8 @@ const Login = ({onClickcross, background, CloseModal}) => {
               <InputText name='email' label='Email' icone={<FaRegEnvelope />} error={services.errors?.email} placeholder="email@registrar.com" state={email} onChange={email => {setEmail(email) }} ref={emailRef}/>
               <InputText type="password" name='password' label='Mot de passe' error={services.errors?.password} icone={<FaStarOfLife />} placeholder="*******" state={password} onChange={password => {setPassword(password) }} />
                 <div>
-                    <label htmlFor="stayConnected">
-                    <input id='stayConnected' type="checkbox" className='mr-2' />
+                    <label htmlFor="remember">
+                    <input id='remember' type="checkbox" className='mr-2' onChange={e => setRemember(!remember)}/>
                         Rester connecté(e) sur cet appareil</label>
                 </div>
                 {services?.loading ? (

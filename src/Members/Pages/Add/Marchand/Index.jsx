@@ -3,9 +3,9 @@ import Button from '../../../../Components/Buttons/Button';
 import Marchand from './Marchand';
 import Parrainage from './Parrainage'
 import Offre from './Offre';
-
+import { GiShop } from 'react-icons/gi'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
-
+import { BsPersonWorkspace, BsCurrencyExchange }  from 'react-icons/bs'
 
 function Index() {
 
@@ -76,244 +76,36 @@ function Index() {
 
 
 function handleClickPage(goTo) {
+    const rondBlanc = 'bg-white h-8 w-8 border-2 rounded-full shadow flex items-center justify-center relative'
+    const pointRouge = 'h-4 w-4 bg-red-800 rounded-full'
+    const colorRouge = '#991B1B'
+    const bgRouge = 'bg-red-800'
+    const rondBlancInactif = 'bg-white h-6 w-6 rounded-full shadow flex items-center justify-center relative'
+    const cercleGrisInactif = 'bg-white border-4 h-6 w-6 rounded-full'
     goTo == 'prev' ? setPage(page -1) : setPage(page +1)
     window.scrollTo({top:200, left:0, behavior:'smooth'})
 }
 
   return (
     <div>
+        <ol className="flex items-center justify-center w-full mb-4 sm:mb-5 p-2">
+            <li className={`flex w-full items-center  after:content-[''] after:h-1 after:w-full translate-x-0 after:border-b ${page == 1 || page == 2 ? ' after:transition after:duration-700 after:border-red-100' : 'after:transition after:duration-1000 after:border-slate-200'} after:border-4 after:inline-block `}>
+                <div className="flex items-center justify-center w-10 h-10 bg-red-100 text-red-800 rounded-full lg:h-12 lg:w-12  shrink-0">
+                    <GiShop className='lg:text-xl text-lg' />
+                </div>
+            </li>
+            <li className={`flex w-full items-center  after:content-[''] after:w-full after:h-1 after:border-b ${ page == 2 ? 'after:transition after:duration-700 after:border-red-100  ' : 'after:transition after:duration-1000 after:border-slate-200'} after:border-4 after:inline-block `}>
+                <div className={`flex items-center justify-center w-10 h-10 ${page == 1 || page == 2 ? ' transition duration-1000 bg-red-100 text-red-800' : 'bg-slate-200 text-slate-600 transition duration-700'} rounded-full lg:h-12 lg:w-12 shrink-0`}>
+                    <BsPersonWorkspace className='lg:text-xl text-lg '/>
+                </div>
+            </li>
+            <li className="flex items-center">
+                <div className={`flex items-center justify-center w-10 h-10 ${page == 2 ? 'transition duration-1000 bg-red-100 text-red-800' : 'bg-slate-200 text-slate-600 transition duration-700'} rounded-full lg:h-12 lg:w-12  shrink-0`}>
+                    <BsCurrencyExchange className='lg:text-xl text-lg ' />
+                </div>
+            </li>
+        </ol>
 
-
-        <div className="h-full w-full py-16">
-
-            <div className="container mx-auto">
-                <dh-component>
-                    <div className="w-11/12 mx-auto">
-
-                        {page == 0 &&
-                        <div className="bg-gray-200 h-1 flex items-center justify-between">
-
-                            <div className='flex justify-between bg-red-800 h-1 items-center relative'>
-                                <div className="bg-white h-8 w-8 border-2 rounded-full shadow flex items-center justify-center relative">
-                                    <div className="h-4 w-4 bg-red-800 rounded-full">
-                                    </div>
-
-                                    <div className="absolute">
-                                        <div className="relative bg-red-800 shadow-lg px-2 py-1 rounded mt-16 -mr-12">
-                                            <svg className="absolute top-0 -mt-2 w-full right-0 -left-6" width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                    <g id="Progress-Bars" transform="translate(-322.000000, -198.000000)" fill="#991B1B">
-                                                        <g id="Group-4" transform="translate(310.000000, 198.000000)">
-                                                            <polygon id="Triangle" points="20 0 28 8 12 8"></polygon>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                            <p tabIndex="0" className="focus:outline-none text-slate-50 text-xs font-bold">Marchand</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                                
-                                <div className="bg-white h-6 w-6 rounded-full shadow flex items-center justify-center relative">
-                                    <div className='bg-white border-4 h-6 w-6 rounded-full'></div>
-
-                                    <div className="absolute right-0">
-                                        <div className="relative bg-white shadow-lg px-2 py-1 rounded mt-16 -mr-6">
-                                            <svg className="absolute top-0 -mt-1 w-full right-0 left-0" width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                    <g id="Progress-Bars" transform="translate(-322.000000, -198.000000)" fill="#FFFFFF">
-                                                        <g id="Group-4" transform="translate(310.000000, 198.000000)">
-                                                            <polygon id="Triangle" points="20 0 28 8 12 8"></polygon>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                            <p tabIndex="0" className="focus:outline-none text-red-800 text-xs font-bold">Parrainage</p>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            
-                            <div className="flex justify-end relative ">
-                                <div className='bg-white border-4 h-6 w-6 rounded-full'></div>
-
-                                <div className="absolute right-0 -mr-2">
-                                    <div className="relative bg-white shadow-lg px-2 py-1 rounded mt-8">
-                                    <svg className="absolute top-0 -mt-1 w-full right-0 left-0" width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                            <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                <g id="Progress-Bars" transform="translate(-322.000000, -198.000000)" fill="#FFFFFF">
-                                                    <g id="Group-4" transform="translate(310.000000, 198.000000)">
-                                                        <polygon id="Triangle" points="20 0 28 8 12 8"></polygon>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                        <p tabIndex="0" className="focus:outline-none text-red-800 text-xs font-bold">Offre</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>}
-
-                        
-
-
-{page == 1 &&
-                        <div className="bg-gray-200 h-1 flex items-center justify-between">
-
-                        <div className='flex justify-between bg-red-800 h-1 items-center relative w-1/2'>
-                            <div className="bg-white h-8 w-8 rounded-full shadow-md flex items-center justify-center relative">
-
-                                <div className="bg-red-800 h-8 w-8 rounded-full shadow flex items-center justify-center relative">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-check" width="18" height="18" viewBox="0 0 24 24" strokeWidth="3" stroke="#FFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                    <path d="M5 12l5 5l10 -10" /></svg>
-                                </div>
-
-                                <div className="absolute">
-                                    <div className="relative bg-white shadow-lg px-2 py-1 rounded mt-16 -mr-12">
-                                        <svg className="absolute top-0 -mt-1 w-full right-0 left-0" width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                            <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                <g id="Progress-Bars" transform="translate(-322.000000, -198.000000)" fill="#FFFFFF">
-                                                    <g id="Group-4" transform="translate(310.000000, 198.000000)">
-                                                        <polygon id="Triangle" points="20 0 28 8 12 8"></polygon>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                        <p tabIndex="0" className="focus:outline-none text-red-800 text-xs font-bold">Marchand</p>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            
-                            <div className="bg-white h-8 w-8 border-2 rounded-full shadow flex items-center justify-center relative -mr-4">
-                                    <div className="h-4 w-4 bg-red-800 rounded-full "></div>
-
-                                <div className="absolute right-0">
-                                    <div className="relative bg-red-800 shadow-lg px-2 py-1 rounded mt-16 -mr-6">
-                                        <svg className="absolute top-0 -mt-2 w-full right-0 left-0" width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                            <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                <g id="Progress-Bars" transform="translate(-322.000000, -198.000000)" fill="#991B1B">
-                                                    <g id="Group-4" transform="translate(310.000000, 198.000000)">
-                                                        <polygon id="Triangle" points="20 0 28 8 12 8"></polygon>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                        <p tabIndex="0" className="focus:outline-none text-slate-50 text-xs font-bold">Parrainage</p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        
-                        <div className="flex justify-end relative ">
-                            <div className='bg-white border-4 h-6 w-6 rounded-full'></div>
-
-                            <div className="absolute right-0 -mr-2">
-                                <div className="relative bg-white shadow-lg px-2 py-1 rounded mt-8">
-                                <svg className="absolute top-0 -mt-1 w-full right-0 left-0" width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                            <g id="Progress-Bars" transform="translate(-322.000000, -198.000000)" fill="#FFFFFF">
-                                                <g id="Group-4" transform="translate(310.000000, 198.000000)">
-                                                    <polygon id="Triangle" points="20 0 28 8 12 8"></polygon>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                    <p tabIndex="0" className="focus:outline-none text-red-800 text-xs font-bold">Offre</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        }
-
-
-
-{page == 2 &&
-                        <div className="bg-gray-200 h-1 flex items-center justify-between">
-
-                        <div className='flex justify-between bg-red-800 h-1 items-center relative w-full'>
-                            <div className="bg-white h-8 w-8 rounded-full shadow-md flex items-center justify-center relative">
-
-                                <div className="bg-red-800 h-8 w-8 rounded-full shadow flex items-center justify-center relative">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-check" width="18" height="18" viewBox="0 0 24 24" strokeWidth="3" stroke="#FFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                    <path d="M5 12l5 5l10 -10" /></svg>
-                                </div>
-
-                                <div className="absolute">
-                                    <div className="relative bg-white shadow-lg px-2 py-1 rounded mt-16 -mr-12">
-                                        <svg className="absolute top-0 -mt-1 w-full right-0 left-0" width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                            <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                <g id="Progress-Bars" transform="translate(-322.000000, -198.000000)" fill="#FFFFFF">
-                                                    <g id="Group-4" transform="translate(310.000000, 198.000000)">
-                                                        <polygon id="Triangle" points="20 0 28 8 12 8"></polygon>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                        <p tabIndex="0" className="focus:outline-none text-red-800 text-xs font-bold">Marchand</p>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            
-                            <div className="bg-white h-8 w-8 rounded-full shadow-md flex items-center justify-center relative">
-                                <div className="bg-red-800 h-8 w-8 rounded-full shadow flex items-center justify-center relative">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-check" width="18" height="18" viewBox="0 0 24 24" strokeWidth="3" stroke="#FFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                    <path d="M5 12l5 5l10 -10" /></svg>
-                                </div>
-
-
-
-                                <div className="absolute right-0 ">
-                                    <div className="relative bg-white shadow-lg px-2 py-1 rounded mt-16 -mr-6">
-                                        <svg className="absolute top-0 -mt-1 w-full right-0 left-0" width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                            <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                <g id="Progress-Bars" transform="translate(-322.000000, -198.000000)" fill="#FFFFFF">
-                                                    <g id="Group-4" transform="translate(310.000000, 198.000000)">
-                                                        <polygon id="Triangle" points="20 0 28 8 12 8"></polygon>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                        <p tabIndex="0" className="focus:outline-none text-red-800 text-xs font-bold">Parrainage</p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                       
-                        
-                            <div className="bg-white h-8 w-8 rounded-full shadow flex items-center justify-center relative">
-                                    <div className="h-4 w-4 bg-red-800 rounded-full"></div>
-
-                                <div className="absolute right-0">
-                                    <div className="relative bg-red-800  shadow-lg px-2 py-1 rounded mt-16">
-                                        <svg className="absolute top-0 -mt-2 w-full right-0 left-2" width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                            <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                <g id="Progress-Bars" transform="translate(-322.000000, -198.000000)" fill="#991B1B">
-                                                    <g id="Group-4" transform="translate(310.000000, 198.000000)">
-                                                        <polygon id="Triangle" points="20 0 28 8 12 8"></polygon>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                        <p tabIndex="0" className="focus:outline-none text-slate-50 text-xs font-bold">Offre</p>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                        }
-                        
-                    </div>
-                </dh-component>
-            </div>
-        </div>
 
             {PageDisplay()}
 

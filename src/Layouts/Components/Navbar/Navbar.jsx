@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
-import Logo from './Logo'
+import React, { useEffect, useState } from 'react'
+import Logo from '../Logo'
 import { FaPlusCircle, FaBars} from 'react-icons/fa';
 import { IoRocketOutline, IoPeople, IoPlaySharp, IoFolderOpenOutline } from 'react-icons/io5'
 
 import NavbarGuest from './NavbarGuest';
 import NavbarAuth from './NavbarAuth';
-import { useAuth } from '../../Members/Auth/Session/useAuth';
 
-import Search from './Search';
+import Search from '../Search';
 import { Link, useLocation } from 'react-router-dom';
-import '../../assets/index.css'
-import { useEffect } from 'react';
+import '../../../assets/index.css'
+import { useAuthContext } from '../../../Members/Auth/Session/AuthContext';
 
-function Navbar({user}) {
+function Navbar() {
 
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const location = useLocation();
-  const { logout } = useAuth();
+  const { token } = useAuthContext()
+
+
   
 
   return (
@@ -55,13 +56,13 @@ function Navbar({user}) {
 
         </div>
 
-       <Search classDiv='static lg:w-1/3'/>
+       <Search classDiv='static'/>
 
 
         {/* Navbar right : User + ADD + */}
         <div className="hidden md:flex">
-          { user ? (
-            <NavbarAuth user={user}/>
+          { token ? (
+            <NavbarAuth/>
           ) : (
             <NavbarGuest />
           )}
@@ -92,9 +93,9 @@ function Navbar({user}) {
       {/*Mobile Menu */}
       <div id="mobileMenu" className={showMenu ? "flex w-full mx-auto py-8 text-center" : 'hidden w-full mx-auto py-8 text-center'}>
         <div className="flex flex-col justify-center items-center w-full">
-          <a href="#" className="block text-gray-200 cursor-pointer py-2 transition duration-300 focus:outline-none focus:text-red-700 focus:underline hover:underline hover:text-red-700">Home</a>
-          <a href="#" className="block text-gray-200 cursor-pointer mt-1 py-2 transition duration-300 focus:outline-none focus:text-red-700 focus:underline hover:underline hover:text-red-700">About</a>
-          <a href="#" className="block text-gray-200 cursor-pointer mt-1 py-2 transition duration-300 focus:outline-none focus:text-red-700 focus:underline hover:underline hover:text-red-700">Blog</a>
+          <a href="#" className="block text-gray-200 cursor-pointer py-2 transition duration-300 focus:outline-none focus:text-red-700 focus:underline hover:underline hover:text-red-700">Derniers</a>
+          <a href="#" className="block text-gray-200 cursor-pointer mt-1 py-2 transition duration-300 focus:outline-none focus:text-red-700 focus:underline hover:underline hover:text-red-700">Boostés</a>
+          <a href="#" className="block text-gray-200 cursor-pointer mt-1 py-2 transition duration-300 focus:outline-none focus:text-red-700 focus:underline hover:underline hover:text-red-700">Annonces</a>
           <a href="#" className="block text-gray-200 cursor-pointer mt-1 py-2 transition duration-300 focus:outline-none focus:text-red-700 focus:underline hover:underline hover:text-red-700">Contact</a>
         </div>
       </div>

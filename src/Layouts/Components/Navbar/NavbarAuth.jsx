@@ -2,18 +2,21 @@ import { Popover, Transition, Tab } from '@headlessui/react'
 import { HiChevronDown, HiChevronUp, HiMenu, HiMail, HiOutlineBell } from 'react-icons/hi'
 import { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
-import http from '../../Services/Api'
+import http from '../../../Services/Api'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../Members/Auth/Session/useAuth'
+import { useAuth } from '../../../Members/Auth/Session/useAuth'
+import { useEffect } from 'react'
+import { useAuthContext } from '../../../Members/Auth/Session/AuthContext'
 
-export default function Navbar({user}) {
+export default function Navbar() {
 
   const { logout } = useAuth();
+  const { token, user, admin } = useAuthContext();
+  
   const navigate = useNavigate();
 
   const userLogout = () => {
     logout()
-    
   }
 
   const links = [
@@ -21,6 +24,10 @@ export default function Navbar({user}) {
     { href: '/support', label: 'Annonces' },
     { href: '/license', label: 'Parrainages' },
   ]
+  if(admin) {
+    links.push({href: '/admin/users', label: 'Utilisateurs'})
+  
+}
 
 
   return (

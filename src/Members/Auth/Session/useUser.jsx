@@ -1,21 +1,30 @@
 import { useContext } from 'react';
-import { AuthContext } from './AuthContext';
+import { useAuthContext } from './AuthContext';
 import { useLocalStorage } from './useLocalStorage';
 
 export const useUser = () => {
-  const { user, setUser } = useContext(AuthContext);
-  const { setItem, removeItem } = useLocalStorage();
+  const { setUser, setToken } = useAuthContext();
+  const { removeItem } = useLocalStorage();
 
-  const addUser = ({user}) => {
+  const addUser = (user) => {
     setUser(user);
-    setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
+  };
+
+  const addToken = (accessToken) => {
+    if(accessToken) {
+      localStorage.setItem('token', accessToken);
+      setToken(accessToken);
+    }  else {
+      removeItem('token')
+    }
   };
 
   const removeUser = () => {
-    setUser(null);
-    setItem('user', '');
-    removeItem('user')
+    setUser({})
+    setToken(null)
+    localStorage.removeItem('user')
   };
 
-  return { addUser, removeUser };
+  return { addUser, removeUser, addToken };
 };

@@ -1,16 +1,17 @@
 import React, { Fragment, useEffect }  from 'react'
-import { AuthContext } from './Auth/Session/AuthContext';
 import { Tab } from '@headlessui/react';
 import { HiMenu, HiMail, HiOutlineBell } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import Menu from './Admin/Components/Menu'
+import { useAuthContext } from './Auth/Session/AuthContext';
 
-function Dashboard({user}) {
+function Dashboard() {
+
+    const { user } = useAuthContext();
 
   return (
   <div className='px-4'>
-        {user.role == 'ADMIN' && <Menu />}
-    <p>Bienvenue {user.name}</p>
+    Bonjour { user?.name }
 
 
     <Tab.Group>
